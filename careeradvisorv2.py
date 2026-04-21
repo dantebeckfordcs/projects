@@ -39,3 +39,33 @@ print(f"Passion: {passion}")
 print(f"Experience: {experience}")
 print(f"Hours per Week: {hours}")
 print(f"Desired Income Range: {income}")
+
+#Section 4: API Integration
+import ollama
+message = f"""You are an encouraging and practical career advisor helping students discover their path.
+You must always provide a helpful roadmap regardless of the student's current situation.
+Never refuse to help. Always give actionable steps from where they are right now.
+
+Here is the student's information:
+Name: {name}
+Age: {age}
+Location: {location}
+Career Goal: {career_goal}
+Education: {education}
+Passion: {passion}
+Experience: {experience}
+Hours per week available: {hours}
+Desired income: {income}
+
+Provide a friendly, detailed, step by step roadmap for this student.
+Start from their current situation and build up realistically.
+Include what to learn first, what to learn next, timeline estimates, and free resources.
+Be encouraging but honest about the journey ahead."""
+response = ollama.chat(model="llama3.2", messages=[{"role":"user","content":message}])
+
+print()
+print("=" * 50)
+print("YOUR PERSONALIZED CAREER ROADMAP")
+print("=" * 50)
+print()
+print(response['message']['content'])
