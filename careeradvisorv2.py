@@ -28,17 +28,18 @@ hours = int(input("How many hours per week can you dedicate to working towards y
 income = input("What is your desired income range for your career? ")
 
 #Section 3: Personalized Roadmap
-print()
-print("=" * 50)
-print("PERSONALIZED ROADMAP")
-print("=" * 50)
-print()
-print(f"Career Goal: {career_goal}")
-print(f"Education: {education}")
-print(f"Passion: {passion}")
-print(f"Experience: {experience}")
-print(f"Hours per Week: {hours}")
-print(f"Desired Income Range: {income}")
+def display_roadmap(career_goal, education, passion, experience, hours, income):
+    print()
+    print("=" * 50)
+    print("PERSONALIZED ROADMAP")
+    print("=" * 50)
+    print()
+    print(f"Career Goal: {career_goal}")
+    print(f"Education: {education}")
+    print(f"Passion: {passion}")
+    print(f"Experience: {experience}")
+    print(f"Hours per Week: {hours}")
+    print(f"Desired Income Range: {income}")
 
 #Section 4: API Integration
 import ollama
@@ -59,7 +60,7 @@ Desired income: {income}
 
 Provide a friendly, detailed, step by step roadmap for this student.
 Start from their current situation and build up realistically.
-Include what to learn first, what to learn next, timeline estimates, and free resources.
+Include what to learn first, what to learn next, timeline estimates, and free resources to use, alongside this provide people and places they can contact to learn more about various things such as university majoring programs, FAFSA etc and how to do all that for those that may not have help.
 Be encouraging but honest about the journey ahead."""
 response = ollama.chat(model="llama3.2", messages=[{"role":"user","content":message}])
 
